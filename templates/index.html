@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href='{% static "css/styles.css" %}'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href='{% static "images/Sunny.png" %}'>
+</head>         
+<body>
+    <div class="header">
+        <h1><i>Know your city weather!</i> </h1>
+        <form method="GET">
+            <label for="city">City</label>
+            <select id="city" name="city">
+                <option value="{{ city }}" selected>{{ city|capfirst }}</option>
+                <hr>
+                <option value="cairo">Cairo</option>
+                <option value="alexandria">Alexandria</option>
+                <option value="sohag">Sohag</option>
+                <option value="aswan">Aswan</option>
+                <option value="giza">Giza</option>
+                <option value="dakahlia">Dakahlia</option>
+                <option value="matrouh">Matrouh</option>
+                <option value="port-said">Port Said</option>
+                <option value="qalyubia">Qalyubia</option>
+                <option value="sharqia">Sharqia</option>
+                <option value="menoufia">Menoufia</option>
+                <option value="minya">Minya</option>
+                <option value="fayoum">Fayoum</option>
+                <option value="assiut">Assiut</option>
+                <option value="beheira">Beheira</option>
+                <option value="beni-suef">Beni Suef</option>
+                <option value="south-sinai">South Sinai</option>
+                <option value="north-sinai">North Sinai</option>
+                <option value="gabal-alzaitoun">Gabal Alzaitoun</option>
+                <option value="kafr-el-sheikh">Kafr El Sheikh</option>
+                <option value="luxor">Luxor</option>
+                <option value="hurghada">Hurghada</option>
+                <option value="suez">Suez</option>
+                <option value="damietta">Damietta</option>
+                <option value="qena">Qena</option>
+                <option value="al-wadi-al-jadid">Al Wadi Al Jadid</option>
+                <option value="dahshur">Dahshur</option>
+                <option value="ismailia">Ismailia</option>
+            </select>
+            <input type="submit" value="Search">
+        </form>
+    </div>
+    {% if error %}
+    <div class="container">
+        <h2 style="color: white;">{{ error }} <br><br> If this happens, find a city close to the city you want.</h2>
+    </div>
+    {% else %}
+    <div class="container">
+        <div class="image">
+            <img src="{{ icon|slice:":29" }}{{"128x128"}}{{ icon|slice:"34:" }}" alt="Weather Icon" width="200">
+        </div>
+        <div class="info">
+            <h1>{{ city|capfirst }}</h1>
+            <h3>{{ temperature }}°C <span class="icon"><i class="fa-solid fa-temperature-three-quarters"></i></span></h3>
+            <h2>{{ description }}</h2>
+            <div class="extra-info">
+                <p>{{ wind_speed }} km/h <span class="icon"><i class="fa-solid fa-wind"></i></span></p>
+                <p>{{ humidity }}% <span class="icon"><i class="fa-solid fa-droplet"></i></span></p>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</body>
+</html>

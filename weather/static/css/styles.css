@@ -1,0 +1,58 @@
+body{
+    background: #333;
+    font-family: sans-serif;
+}
+.header{
+    margin: 10px;
+}
+h1{
+    color: white;
+}
+label{
+    color: white;
+    font-size: 20px;
+}
+select{
+    font-size: 18px;
+    border-radius: 10px;
+}
+input{
+    color: #333;
+    font-size: 14px;
+    border-radius: 10px;
+    background: white;
+    padding: 5px 10px;
+    transition: 0.7s;
+}
+input:hover{
+    background: #868686;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding-top: 100px;
+}
+.image{
+    margin-right: 40px;
+}
+.info{
+    color: white;
+}
+
+@media (max-width: 400px){
+    .container{
+        display: block;
+    }
+    .image{
+        display: flex;
+        justify-content: center;
+        margin-left: 40px;
+    }
+    label, select, input{
+        font-size: 12px;
+    }
+    input{
+        padding: 2px 5px;
+    }
+}
